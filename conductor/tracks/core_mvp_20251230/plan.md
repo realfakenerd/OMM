@@ -20,15 +20,15 @@ This plan outlines the steps to implement the core mod management functionality 
 - [x] Task: Implement backup mechanism before writing config files b3e5e44
 - [x] Task: Conductor - User Manual Verification 'Phase 3: OpenMW Config Parser (Rust)' (Protocol in workflow.md) a6d13ac
 
-## Phase 4: Frontend Mod Management UI (SvelteKit)
+## Phase 4: Frontend Mod Management UI (SvelteKit) [checkpoint: 0f4a310]
 - [x] Task: Write tests for Mod List component and state management 6d34325
 - [x] Task: Create basic UI for listing mods detected in data directories 823c301
 - [x] Task: Implement mod toggle (active/inactive) logic in UI state e3723d9
 - [x] Task: Implement drag-and-drop reordering for mod load order 60aa51a
-- [ ] Task: Conductor - User Manual Verification 'Phase 4: Frontend Mod Management UI (SvelteKit)' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 4: Frontend Mod Management UI (SvelteKit)' (Protocol in workflow.md) 0f4a310
 
 ## Phase 5: End-to-End Integration
-- [ ] Task: Write integration tests for the full flow (Load config -> Change Order -> Save)
+- [~] Task: Write integration tests for the full flow (Load config -> Change Order -> Save)
 - [ ] Task: Connect SvelteKit UI to Tauri commands for reading/writing config
 - [ ] Task: Implement error handling and user notifications for permission/IO failures
 - [ ] Task: Conductor - User Manual Verification 'Phase 5: End-to-End Integration' (Protocol in workflow.md)
