@@ -1,14 +1,14 @@
 use tauri::command;
 use std::fs;
 
-#[tauri::command]
+#[command]
 pub async fn request_saf_permission(_path: String) -> Result<(), String> {
     // Placeholder implementation to pass tests.
     // Actual implementation will involve calling Android's SAF via JNI.
     Ok(())
 }
 
-#[tauri::command]
+#[command]
 pub async fn list_mods(path: String) -> Result<Vec<String>, String> {
     let entries = fs::read_dir(path).map_err(|e| e.to_string())?;
     let mut mods = Vec::new();
@@ -21,12 +21,12 @@ pub async fn list_mods(path: String) -> Result<Vec<String>, String> {
     Ok(mods)
 }
 
-#[tauri::command]
+#[command]
 pub async fn read_config(path: String) -> Result<String, String> {
     fs::read_to_string(path).map_err(|e| e.to_string())
 }
 
-#[tauri::command]
+#[command]
 pub async fn write_config(path: String, content: String) -> Result<(), String> {
     fs::write(path, content).map_err(|e| e.to_string())
 }
