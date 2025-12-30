@@ -55,4 +55,17 @@ describe('shadcn-svelte dependencies', () => {
             }
         }
     });
+
+    it('should have a demo page', async () => {
+        const fs = await import('fs/promises');
+        const path = await import('path');
+        const demoPath = path.resolve(process.cwd(), 'src/routes/shadcn-demo/+page.svelte');
+        
+        try {
+            await fs.access(demoPath);
+            expect(true).toBe(true);
+        } catch {
+            expect(true).toBe(false); // Should fail if file doesn't exist
+        }
+    });
 });
