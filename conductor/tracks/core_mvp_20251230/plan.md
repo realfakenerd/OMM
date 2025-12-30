@@ -27,8 +27,8 @@ This plan outlines the steps to implement the core mod management functionality 
 - [x] Task: Implement drag-and-drop reordering for mod load order 60aa51a
 - [x] Task: Conductor - User Manual Verification 'Phase 4: Frontend Mod Management UI (SvelteKit)' (Protocol in workflow.md) 0f4a310
 
-## Phase 5: End-to-End Integration
+## Phase 5: End-to-End Integration [checkpoint: bdbe7bf]
 - [x] Task: Write integration tests for the full flow (Load config -> Change Order -> Save) ad985a4
 - [x] Task: Connect SvelteKit UI to Tauri commands for reading/writing config bff58ee
 - [x] Task: Implement error handling and user notifications for permission/IO failures 3649ee3
-- [ ] Task: Conductor - User Manual Verification 'Phase 5: End-to-End Integration' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 5: End-to-End Integration' (Protocol in workflow.md) bdbe7bf
