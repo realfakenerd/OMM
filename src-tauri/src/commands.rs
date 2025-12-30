@@ -75,4 +75,29 @@ mod tests {
         assert!(result.is_ok());
         assert_eq!(fs::read_to_string(&file_path).unwrap(), "new content");
     }
+
+    #[tokio::test]
+    async fn test_full_config_flow() {
+        use crate::config::OpenMWConfig;
+        
+        let dir = tempdir().unwrap();
+        let file_path = dir.path().join("openmw.cfg");
+        let initial_content = "data=\"path\"\ncontent=old.esm\n";
+        fs::write(&file_path, initial_content).unwrap();
+        
+        // 1. Read
+        let content = read_config(file_path.to_str().unwrap().into()).await.unwrap();
+        
+        // 2. Parse & Update
+        let mut config = OpenMWConfig::parse(&content);
+        config.update_content_files(vec!["new.esm".into()]);
+        
+        // 3. Serialize & Write
+        let new_content = config.serialize();
+        write_config(file_path.to_str().unwrap().into(), new_content).await.unwrap();
+        
+        // 4. Verify
+        let final_content = fs::read_to_string(&file_path).unwrap();
+        assert_eq!(final_content, "data=\"path\"\ncontent=new.esm\n");
+    }
 }
