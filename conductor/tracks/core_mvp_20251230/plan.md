@@ -14,7 +14,7 @@ This plan outlines the steps to implement the core mod management functionality 
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Android File System Bridge (Tauri/Rust)' (Protocol in workflow.md) a603059
 
 ## Phase 3: OpenMW Config Parser (Rust)
-- [ ] Task: Write tests for `openmw.cfg` parsing and serialization
+- [x] Task: Write tests for `openmw.cfg` parsing and serialization 1d3f412
 - [ ] Task: Implement `openmw.cfg` parser (extracting `data` and `content` lines)
 - [ ] Task: Implement logic to update load order and data paths in memory
 - [ ] Task: Implement backup mechanism before writing config files
