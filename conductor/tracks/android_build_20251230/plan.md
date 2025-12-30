@@ -10,7 +10,7 @@
 - [x] Task: Create `.github/workflows/android-build.yml` with basic structure (triggers, checkout). 08a681a
 - [x] Task: Configure environment setup steps (Rust, Bun, Java, Android SDK/NDK) in the workflow. 08a681a
 - [x] Task: Implement caching for Cargo, Bun, and Gradle to optimize build times. 08a681a
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: GitHub Actions Workflow Setup' (Protocol in workflow.md)
+- [~] Task: Conductor - User Manual Verification 'Phase 2: GitHub Actions Workflow Setup' (Protocol in workflow.md)
 
 ## Phase 3: Build & Artifact Implementation
 - [x] Task: Add steps to install dependencies and run the build command in the workflow.
