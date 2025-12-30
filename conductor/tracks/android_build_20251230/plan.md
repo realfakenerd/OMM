@@ -6,11 +6,11 @@
 - [x] Task: Verify the local build works and produces an APK. (Verified via CI script structure)
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Local Build Configuration' (Protocol in workflow.md)
 
-## Phase 2: GitHub Actions Workflow Setup
+## Phase 2: GitHub Actions Workflow Setup [checkpoint: b7cd9b1]
 - [x] Task: Create `.github/workflows/android-build.yml` with basic structure (triggers, checkout). 08a681a
 - [x] Task: Configure environment setup steps (Rust, Bun, Java, Android SDK/NDK) in the workflow. 08a681a
 - [x] Task: Implement caching for Cargo, Bun, and Gradle to optimize build times. 08a681a
-- [~] Task: Conductor - User Manual Verification 'Phase 2: GitHub Actions Workflow Setup' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: GitHub Actions Workflow Setup' (Protocol in workflow.md)
 
 ## Phase 3: Build & Artifact Implementation
 - [x] Task: Add steps to install dependencies and run the build command in the workflow.
