@@ -1,0 +1,26 @@
+# Consolidated permissions for saf plugin
+
+[[permission]]
+identifier = "allow-check-permission"
+description = "Enables the check_permission command"
+commands.allow = ["check_permission"]
+
+[[permission]]
+identifier = "allow-list-dir"
+description = "Enables the list_dir command"
+commands.allow = ["list_dir"]
+
+[[permission]]
+identifier = "allow-read-file"
+description = "Enables the read_file command"
+commands.allow = ["read_file"]
+
+[[permission]]
+identifier = "allow-request-permission"
+description = "Enables the request_permission command"
+commands.allow = ["request_permission"]
+
+[[permission]]
+identifier = "allow-write-file"
+description = "Enables the write_file command"
+commands.allow = ["write_file"]

@@ -21,6 +21,7 @@
 
 ## CI/CD & Build System
 - **Local Build Automation:** Standardized build scripts via `package.json` for Android APK generation (including optimized `aarch64` builds).
+- **APK Signing:** Local signing process using `keytool` for keystore generation, Gradle configuration for release builds, and `apksigner` for verification.
 - **Automated Pipeline:** GitHub Actions workflow (`android-build.yml`) for continuous integration, environment setup (Rust, Bun, Java, NDK), and artifact generation.
 - **Environment:** OpenJDK 17, Android SDK (API 35+), NDK 27.
 

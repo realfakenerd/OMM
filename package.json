@@ -9,7 +9,7 @@
 		"preview": "vite preview",
 		"test": "vitest run",
 		"build:android": "tauri android build",
-		"build:android:fast": "export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64 && export ANDROID_HOME=$HOME/Android/Sdk && export NDK_HOME=$HOME/Android/Sdk/ndk/27.0.12077973 && tauri android build --target aarch64 && /home/luke/Android/Sdk/build-tools/35.0.0/apksigner verify --print-certs src-tauri/gen/android/app/build/outputs/apk/universal/release/app-universal-release-unsigned.apk",
+		"build:android:fast": "export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64 && export ANDROID_HOME=$HOME/Android/Sdk && export NDK_HOME=$HOME/Android/Sdk/ndk/27.0.12077973 && tauri android build --target aarch64 && /home/luke/Android/Sdk/build-tools/35.0.0/apksigner verify --print-certs src-tauri/gen/android/app/build/outputs/apk/universal/release/app-universal-release.apk",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
