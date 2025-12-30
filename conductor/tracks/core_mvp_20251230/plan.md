@@ -17,7 +17,7 @@ This plan outlines the steps to implement the core mod management functionality 
 - [x] Task: Write tests for `openmw.cfg` parsing and serialization 1d3f412
 - [x] Task: Implement `openmw.cfg` parser (extracting `data` and `content` lines) d41bec2
 - [x] Task: Implement logic to update load order and data paths in memory 2580c79
-- [ ] Task: Implement backup mechanism before writing config files
+- [x] Task: Implement backup mechanism before writing config files b3e5e44
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: OpenMW Config Parser (Rust)' (Protocol in workflow.md)
 
 ## Phase 4: Frontend Mod Management UI (SvelteKit)
