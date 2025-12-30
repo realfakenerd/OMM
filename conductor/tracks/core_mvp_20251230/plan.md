@@ -4,7 +4,7 @@ This plan outlines the steps to implement the core mod management functionality 
 
 ## Phase 1: Project Initialization & Scaffolding
 - [x] Task: Initialize Tauri project with SvelteKit frontend c61a2a0
-- [~] Task: Set up basic Rust backend structure
+- [x] Task: Set up basic Rust backend structure ee2ae2b
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Project Initialization & Scaffolding' (Protocol in workflow.md)
 
 ## Phase 2: Android File System Bridge (Tauri/Rust)
