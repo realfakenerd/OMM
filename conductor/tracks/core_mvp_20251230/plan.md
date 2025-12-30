@@ -30,5 +30,5 @@ This plan outlines the steps to implement the core mod management functionality 
 ## Phase 5: End-to-End Integration
 - [x] Task: Write integration tests for the full flow (Load config -> Change Order -> Save) ad985a4
 - [x] Task: Connect SvelteKit UI to Tauri commands for reading/writing config bff58ee
-- [ ] Task: Implement error handling and user notifications for permission/IO failures
+- [x] Task: Implement error handling and user notifications for permission/IO failures 3649ee3
 - [ ] Task: Conductor - User Manual Verification 'Phase 5: End-to-End Integration' (Protocol in workflow.md)
