@@ -13,15 +13,15 @@ This plan outlines the steps to implement the core mod management functionality 
 - [x] Task: Implement basic file read/write commands for Android SAF 9ac8d98
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Android File System Bridge (Tauri/Rust)' (Protocol in workflow.md) a603059
 
-## Phase 3: OpenMW Config Parser (Rust)
+## Phase 3: OpenMW Config Parser (Rust) [checkpoint: a6d13ac]
 - [x] Task: Write tests for `openmw.cfg` parsing and serialization 1d3f412
 - [x] Task: Implement `openmw.cfg` parser (extracting `data` and `content` lines) d41bec2
 - [x] Task: Implement logic to update load order and data paths in memory 2580c79
 - [x] Task: Implement backup mechanism before writing config files b3e5e44
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: OpenMW Config Parser (Rust)' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: OpenMW Config Parser (Rust)' (Protocol in workflow.md) a6d13ac
 
 ## Phase 4: Frontend Mod Management UI (SvelteKit)
-- [ ] Task: Write tests for Mod List component and state management
+- [~] Task: Write tests for Mod List component and state management
 - [ ] Task: Create basic UI for listing mods detected in data directories
 - [ ] Task: Implement mod toggle (active/inactive) logic in UI state
 - [ ] Task: Implement drag-and-drop reordering for mod load order
