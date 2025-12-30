@@ -3,5 +3,15 @@ import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-	plugins: [tailwindcss(), sveltekit()]
+	plugins: [tailwindcss(), sveltekit()],
+	resolve: process.env.VITEST
+		? {
+				conditions: ['browser']
+			}
+		: undefined,
+	test: {
+		environment: 'jsdom',
+		setupFiles: ['./tests/setup.ts'],
+		include: ['src/**/*.{test,spec}.{js,ts}', 'tests/**/*.{test,spec}.{js,ts}']
+	}
 });
