@@ -18,4 +18,17 @@ describe('shadcn-svelte dependencies', () => {
             expect(e).toBeUndefined(); // This will fail if not installed
         }
     });
+
+    it('should have components.json configuration file', async () => {
+        const fs = await import('fs/promises');
+        const path = await import('path');
+        const configPath = path.resolve(process.cwd(), 'components.json');
+        
+        try {
+            await fs.access(configPath);
+            expect(true).toBe(true);
+        } catch {
+            expect(true).toBe(false); // Should fail if file doesn't exist
+        }
+    });
 });
