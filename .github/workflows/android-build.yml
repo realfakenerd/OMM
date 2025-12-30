@@ -1,0 +1,59 @@
+name: Android Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: install bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: setup rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android, armv7-linux-androideabi, i686-linux-android, x86_64-linux-android
+
+      - name: rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+
+      - name: setup java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: setup android sdk
+        uses: android-actions/setup-android@v3
+
+      - name: install ndk
+        run: sdkmanager "ndk;27.0.12077973"
+
+      - name: install dependencies
+        run: bun install
+
+      - name: build android apk
+        run: bun run build:android
+        env:
+          NDK_HOME: ${{ env.ANDROID_HOME }}/ndk/27.0.12077973
+
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release
+          path: src-tauri/gen/android/app/build/outputs/apk/universal/release/*.apk
