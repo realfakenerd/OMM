@@ -9,7 +9,7 @@ This plan outlines the steps to implement the core mod management functionality 
 
 ## Phase 2: Android File System Bridge (Tauri/Rust)
 - [x] Task: Write tests for SAF permission handling and basic file I/O commands 578ce9c
-- [ ] Task: Implement `request_saf_permission` Tauri command
+- [x] Task: Implement `request_saf_permission` Tauri command 7f1a5ec
 - [ ] Task: Implement basic file read/write commands for Android SAF
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Android File System Bridge (Tauri/Rust)' (Protocol in workflow.md)
 
