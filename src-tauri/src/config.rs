@@ -1,3 +1,5 @@
+use std::fs;
+
 #[derive(Debug, PartialEq, Clone)]
 pub enum ConfigLine {
     Data(String),
@@ -101,11 +103,17 @@ impl OpenMWConfig {
         self.lines.append(&mut new_lines);
         self.lines.append(&mut old_lines);
     }
+
+    pub fn backup(path: &str) -> Result<(), String> {
+        let backup_path = format!("{}.bak", path);
+        fs::copy(path, backup_path).map(|_| ()).map_err(|e| e.to_string())
+    }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use tempfile::tempdir;
 
     #[test]
     fn test_parse_openmw_cfg() {
@@ -166,5 +174,19 @@ content=file.esm");
 data=\"new2\"
 content=file.esm\n";
         assert_eq!(config.serialize(), expected);
+    }
+
+    #[test]
+    fn test_backup() {
+        let dir = tempdir().unwrap();
+        let file_path = dir.path().join("openmw.cfg");
+        fs::write(&file_path, "content").unwrap();
+        
+        let result = OpenMWConfig::backup(file_path.to_str().unwrap());
+        assert!(result.is_ok());
+        
+        let backup_path = dir.path().join("openmw.cfg.bak");
+        assert!(backup_path.exists());
+        assert_eq!(fs::read_to_string(backup_path).unwrap(), "content");
     }
 }
