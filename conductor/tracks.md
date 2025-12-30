@@ -4,5 +4,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-## [~] Track: Add shadcn to the project to improve visuals
-*Link: [./conductor/tracks/shadcn_setup_20251230/](./conductor/tracks/shadcn_setup_20251230/)*
+## [~] Track: Automate Android APK Build & CI/CD
+*Link: [./conductor/tracks/android_build_20251230/](./conductor/tracks/android_build_20251230/)*
