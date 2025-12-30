@@ -11,14 +11,42 @@ pub struct OpenMWConfig {
 }
 
 impl OpenMWConfig {
-    pub fn parse(_content: &str) -> Self {
-        // Placeholder
-        Self { lines: vec![] }
+    pub fn parse(content: &str) -> Self {
+        let lines = content
+            .lines()
+            .map(|line| {
+                let trimmed = line.trim();
+                if trimmed.starts_with("data=") {
+                    let path = trimmed["data=".len()..].trim_matches('"');
+                    ConfigLine::Data(path.to_string())
+                } else if trimmed.starts_with("content=") {
+                    let name = trimmed["content=".len()..].trim();
+                    ConfigLine::Content(name.to_string())
+                } else {
+                    ConfigLine::Other(line.to_string())
+                }
+            })
+            .collect();
+        Self { lines }
     }
 
     pub fn serialize(&self) -> String {
-        // Placeholder
-        String::new()
+        let mut output = String::new();
+        for line in &self.lines {
+            match line {
+                ConfigLine::Data(path) => {
+                    output.push_str(&format!("data=\"{}\"\n", path));
+                }
+                ConfigLine::Content(name) => {
+                    output.push_str(&format!("content={}\n", name));
+                }
+                ConfigLine::Other(other) => {
+                    output.push_str(other);
+                    output.push('\n');
+                }
+            }
+        }
+        output
     }
 }
 
