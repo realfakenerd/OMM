@@ -17,9 +17,14 @@
         manager.toggleMod(name);
         mods = [...manager.getMods()];
     }
+
+    function handleReorder(from: number, to: number) {
+        manager.reorder(from, to);
+        mods = [...manager.getMods()];
+    }
 </script>
 
 <main class="container mx-auto">
-    <h1 class="text-3xl font-bold p-4">OpenMW Android Modloader</h1>
-    <ModList {mods} onToggle={handleToggle} />
+    <h1 class="text-3xl font-bold p-4 text-center border-b mb-4">OpenMW Android Modloader</h1>
+    <ModList {mods} onToggle={handleToggle} onReorder={handleReorder} />
 </main>
