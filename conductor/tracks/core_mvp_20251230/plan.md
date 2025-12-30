@@ -2,10 +2,10 @@
 
 This plan outlines the steps to implement the core mod management functionality for the OpenMW Android Modloader.
 
-## Phase 1: Project Initialization & Scaffolding
+## Phase 1: Project Initialization & Scaffolding [checkpoint: 35d4507]
 - [x] Task: Initialize Tauri project with SvelteKit frontend c61a2a0
 - [x] Task: Set up basic Rust backend structure ee2ae2b
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Project Initialization & Scaffolding' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Project Initialization & Scaffolding' (Protocol in workflow.md) 35d4507
 
 ## Phase 2: Android File System Bridge (Tauri/Rust)
 - [ ] Task: Write tests for SAF permission handling and basic file I/O commands
