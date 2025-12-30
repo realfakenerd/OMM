@@ -31,4 +31,10 @@ describe('shadcn-svelte dependencies', () => {
             expect(true).toBe(false); // Should fail if file doesn't exist
         }
     });
+
+    it('should correctly merge tailwind classes using cn utility', async () => {
+        const { cn } = await import('../src/lib/utils');
+        const result = cn('bg-red-500', 'bg-blue-500');
+        expect(result).toBe('bg-blue-500'); // tailwind-merge should resolve this
+    });
 });
