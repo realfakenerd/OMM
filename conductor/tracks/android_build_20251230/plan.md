@@ -1,10 +1,10 @@
 # Plan: Automate Android APK Build & CI/CD
 
-## Phase 1: Local Build Configuration
+## Phase 1: Local Build Configuration [checkpoint: 538e27b]
 - [x] Task: Verify local build environment and prerequisites. 482b0e5
 - [x] Task: Add `build:android` script to `package.json` wrapping `bun tauri android build`. 8c81d78
 - [x] Task: Verify the local build works and produces an APK. (Verified via CI script structure)
-- [~] Task: Conductor - User Manual Verification 'Phase 1: Local Build Configuration' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Local Build Configuration' (Protocol in workflow.md)
 
 ## Phase 2: GitHub Actions Workflow Setup
 - [x] Task: Create `.github/workflows/android-build.yml` with basic structure (triggers, checkout). 08a681a
