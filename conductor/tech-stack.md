@@ -19,5 +19,10 @@
 ## Android-Specific Integration
 - **Storage Access Framework (SAF):** Custom Rust implementation (possibly using `jni-rs`) to interact with Android's SAF, allowing the app to securely request and use permissions for OpenMW's data and configuration directories.
 
+## CI/CD & Build System
+- **Local Build Automation:** Standardized build scripts via `package.json` for Android APK generation (including optimized `aarch64` builds).
+- **Automated Pipeline:** GitHub Actions workflow (`android-build.yml`) for continuous integration, environment setup (Rust, Bun, Java, NDK), and artifact generation.
+- **Environment:** OpenJDK 17, Android SDK (API 35+), NDK 27.
+
 ## Development Tooling
 - **Svelte MCP:** A Model Context Protocol server for Svelte and SvelteKit. It should be used whenever possible for consulting documentation, best practices, and component implementation.

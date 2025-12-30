@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import androidx.activity.result.ActivityResult
-import app.tauri.annotation.ActivityResultHandler
+import app.tauri.annotation.ActivityCallback
 import app.tauri.annotation.Command
 import app.tauri.annotation.TauriPlugin
 import app.tauri.plugin.JSObject
@@ -27,7 +27,7 @@ class SafPlugin(private val activity: Activity): Plugin(activity) {
         startActivityForResult(invoke, intent, "handleRequestPermission")
     }
 
-    @ActivityResultHandler
+    @ActivityCallback
     fun handleRequestPermission(invoke: Invoke, result: ActivityResult) {
         if (result.resultCode == Activity.RESULT_OK) {
             val uri = result.data?.data
@@ -49,7 +49,7 @@ class SafPlugin(private val activity: Activity): Plugin(activity) {
 
     @Command
     fun checkPermission(invoke: Invoke) {
-        val uriString = invoke.getString("uri")
+        val uriString = invoke.getArgs().getString("uri")
         if (uriString == null) {
             invoke.reject("URI is required")
             return
@@ -72,7 +72,7 @@ class SafPlugin(private val activity: Activity): Plugin(activity) {
 
     @Command
     fun listDir(invoke: Invoke) {
-        val uriString = invoke.getString("uri")
+        val uriString = invoke.getArgs().getString("uri")
         if (uriString == null) {
             invoke.reject("URI is required")
             return
@@ -98,7 +98,7 @@ class SafPlugin(private val activity: Activity): Plugin(activity) {
 
     @Command
     fun readFile(invoke: Invoke) {
-        val uriString = invoke.getString("uri")
+        val uriString = invoke.getArgs().getString("uri")
         if (uriString == null) {
             invoke.reject("URI is required")
             return
@@ -116,8 +116,8 @@ class SafPlugin(private val activity: Activity): Plugin(activity) {
 
     @Command
     fun writeFile(invoke: Invoke) {
-        val uriString = invoke.getString("uri")
-        val content = invoke.getString("content")
+        val uriString = invoke.getArgs().getString("uri")
+        val content = invoke.getArgs().getString("content")
         if (uriString == null || content == null) {
             invoke.reject("URI and content are required")
             return
