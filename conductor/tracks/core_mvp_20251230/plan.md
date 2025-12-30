@@ -21,7 +21,7 @@ This plan outlines the steps to implement the core mod management functionality 
 - [x] Task: Conductor - User Manual Verification 'Phase 3: OpenMW Config Parser (Rust)' (Protocol in workflow.md) a6d13ac
 
 ## Phase 4: Frontend Mod Management UI (SvelteKit)
-- [~] Task: Write tests for Mod List component and state management
+- [x] Task: Write tests for Mod List component and state management 6d34325
 - [ ] Task: Create basic UI for listing mods detected in data directories
 - [ ] Task: Implement mod toggle (active/inactive) logic in UI state
 - [ ] Task: Implement drag-and-drop reordering for mod load order
