@@ -2,6 +2,7 @@
     import type { Mod } from '$lib/mods';
 
     export let mods: Mod[] = [];
+    export let onToggle: (name: String) => void;
 </script>
 
 <div class="p-4">
@@ -9,7 +10,12 @@
     <ul class="space-y-2">
         {#each mods as mod}
             <li class="flex items-center p-2 border rounded hover:bg-gray-100">
-                <input type="checkbox" checked={mod.enabled} class="mr-2" />
+                <input 
+                    type="checkbox" 
+                    checked={mod.enabled} 
+                    on:change={() => onToggle(mod.name)}
+                    class="mr-2" 
+                />
                 <span>{mod.name}</span>
             </li>
         {/each}

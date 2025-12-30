@@ -23,7 +23,7 @@ This plan outlines the steps to implement the core mod management functionality 
 ## Phase 4: Frontend Mod Management UI (SvelteKit)
 - [x] Task: Write tests for Mod List component and state management 6d34325
 - [x] Task: Create basic UI for listing mods detected in data directories 823c301
-- [ ] Task: Implement mod toggle (active/inactive) logic in UI state
+- [~] Task: Implement mod toggle (active/inactive) logic in UI state
 - [ ] Task: Implement drag-and-drop reordering for mod load order
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: Frontend Mod Management UI (SvelteKit)' (Protocol in workflow.md)
 

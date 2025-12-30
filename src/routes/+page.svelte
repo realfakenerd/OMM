@@ -12,9 +12,14 @@
         manager.addMod({ name: 'Bloodmoon.esm', enabled: true });
         mods = [...manager.getMods()];
     });
+
+    function handleToggle(name: String) {
+        manager.toggleMod(name);
+        mods = [...manager.getMods()];
+    }
 </script>
 
 <main class="container mx-auto">
     <h1 class="text-3xl font-bold p-4">OpenMW Android Modloader</h1>
-    <ModList {mods} />
+    <ModList {mods} onToggle={handleToggle} />
 </main>
