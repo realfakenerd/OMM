@@ -7,11 +7,11 @@ This plan outlines the steps to implement the core mod management functionality 
 - [x] Task: Set up basic Rust backend structure ee2ae2b
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Project Initialization & Scaffolding' (Protocol in workflow.md) 35d4507
 
-## Phase 2: Android File System Bridge (Tauri/Rust)
+## Phase 2: Android File System Bridge (Tauri/Rust) [checkpoint: a603059]
 - [x] Task: Write tests for SAF permission handling and basic file I/O commands 578ce9c
 - [x] Task: Implement `request_saf_permission` Tauri command 7f1a5ec
 - [x] Task: Implement basic file read/write commands for Android SAF 9ac8d98
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Android File System Bridge (Tauri/Rust)' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Android File System Bridge (Tauri/Rust)' (Protocol in workflow.md) a603059
 
 ## Phase 3: OpenMW Config Parser (Rust)
 - [ ] Task: Write tests for `openmw.cfg` parsing and serialization
