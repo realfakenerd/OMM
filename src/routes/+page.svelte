@@ -14,7 +14,6 @@
     onMount(async () => {
         try {
             status = "Checking permissions...";
-            // In a real app, we might store the last used URI in local storage
             const storedUri = localStorage.getItem("openmw_config_uri");
             if (storedUri) {
                 configUri = storedUri;
