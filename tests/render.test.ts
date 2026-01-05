@@ -10,7 +10,7 @@ describe('Button Component', () => {
 
     it('should render correctly', () => {
         const snippet = createRawSnippet(() => ({
-            render: () => 'Click me'
+            render: () => '<span>Click me</span>'
         }));
         const { getByRole } = render(Button, { props: { children: snippet } });
         const button = getByRole('button');
@@ -21,7 +21,7 @@ describe('Button Component', () => {
     it('should handle clicks', async () => {
         const handleClick = vi.fn();
         const snippet = createRawSnippet(() => ({
-            render: () => 'Click me'
+            render: () => '<span>Click me</span>'
         }));
         const { getByRole } = render(Button, { props: { children: snippet, onclick: handleClick } });
         const button = getByRole('button');
