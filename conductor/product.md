@@ -16,7 +16,7 @@ To provide a robust, efficient, and user-friendly mod management experience for 
 ## Key Features
 - **File Browser Integration:** Built-in file explorer to locate and import mod archives or folders.
 - **Mod Profiles:** Create and switch between multiple mod configurations for different playthroughs or testing.
-- **Modding Platform Integration:** Connect with services like Nexus Mods for direct mod discovery and potentially downloads.
+- **Nexus Mods Integration:** Full integration with Nexus Mods for discovering, searching, and downloading mods directly in-app with a background queue.
 - **Minimalist UI:** A high-density, functional interface built with Tauri and SvelteKit, focused on performance and utility.
 
 ## Technical Approach (Android)

@@ -12,7 +12,7 @@
 - **UI Components:** [shadcn-svelte](https://shadcn-svelte.com/) - A collection of re-usable components built with Bits UI and Tailwind CSS.
 
 ## Backend & Persistence
-- **Database:** [SQLite](https://www.sqlite.org/) - A lightweight, embedded database for managing complex mod metadata, user profiles, and load order configurations.
+- **Database:** [SQLite](https://www.sqlite.org/) (via `rusqlite`) - Used for mod metadata, user profiles, and caching Nexus Mods API responses.
 - **Key-Value Store:** Tauri's `Store` API for simple persistence of application-wide settings and preferences.
 - **Language:** Rust - Used for all backend logic, performance-critical operations (like file scanning and config parsing), and interfacing with Android APIs.
 
