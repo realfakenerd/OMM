@@ -1,7 +1,7 @@
 [package]
-name = "tes-modloader"
+name = "openmoaloader"
 version = "0.1.0"
-description = "OpenMW Android Modloader"
+description = "Open Modloader"
 authors = ["you"]
 edition = "2021"
 
@@ -17,7 +17,7 @@ tauri-plugin-saf = { path = "plugins/saf" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 tokio = { version = "1.48.0", features = ["full"] }
-reqwest = { version = "0.12", features = ["json", "stream"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "stream", "rustls-tls"] }
 dotenvy = "0.15"
 rusqlite = { version = "0.31", features = ["bundled"] }
 futures-util = "0.3"
