@@ -1,8 +1,0 @@
-{
-  "track_id": "nexus_integration_20260202",
-  "type": "feature",
-  "status": "new",
-  "created_at": "2026-02-02T12:56:00Z",
-  "updated_at": "2026-02-02T12:56:00Z",
-  "description": "Add integration with Nexus Mods, starting with the explorer page and background download queue."
-}
