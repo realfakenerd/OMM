@@ -1,6 +1,4 @@
 use serde::{Deserialize, Serialize};
-use std::sync::{Arc, Mutex};
-use tokio::sync::mpsc;
 use tokio::io::AsyncWriteExt;
 use futures_util::StreamExt;
 use tauri::{AppHandle, Emitter, Runtime};
@@ -31,7 +29,7 @@ impl DownloadManager {
         url: String,
         dest_path: String,
     ) -> Result<(), String> {
-        let mut response = self.client.get(&url)
+        let response = self.client.get(&url)
             .send()
             .await
             .map_err(|e| e.to_string())?;
