@@ -1,5 +1,5 @@
 [package]
-name = "openmoaloader"
+name = "openmodloader"
 version = "0.1.0"
 description = "Open Modloader"
 authors = ["you"]
