@@ -1,13 +1,15 @@
 <script>
     import BottomNavbar from "$lib/components/BottomNavbar.svelte";
     import "@fontsource-variable/space-grotesk";
-    import { ModeWatcher } from "mode-watcher";
     import "../app.css";
+    import { themeChange } from "theme-change";
 
     let { children } = $props();
-</script>
 
-<ModeWatcher />
+    $effect(() => {
+        themeChange(false);
+    });
+</script>
 
 {@render children()}
 
