@@ -1,4 +1,4 @@
-use tauri::{AppHandle, command, Runtime, State};
+use tauri::{AppHandle, command, Runtime, State, Manager};
 use tauri_plugin_saf::SafExt;
 use tauri_plugin_saf::models::*;
 use crate::nexus::{NexusClient, NexusMod};
@@ -68,7 +68,7 @@ pub async fn search_mods(state: State<'_, Mutex<Connection>>, query: String) -> 
     Ok(mods)
 }
 
-use crate::download::{DownloadManager, DownloadProgress};
+use crate::download::DownloadManager;
 
 #[command]
 pub async fn download_mod<R: Runtime>(
