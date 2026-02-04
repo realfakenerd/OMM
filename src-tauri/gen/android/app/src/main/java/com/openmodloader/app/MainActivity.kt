@@ -1,4 +1,4 @@
-package com.tes_modloader.app
+package com.openmodloader.app
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

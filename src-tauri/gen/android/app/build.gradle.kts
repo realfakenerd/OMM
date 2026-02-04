@@ -22,11 +22,11 @@ val localProperties = Properties().apply {
 
 android {
     compileSdk = 36
-    namespace = "com.tes_modloader.app"
+    namespace = "com.openmodloader.app"
     defaultConfig {
         manifestPlaceholders["usesCleartextTraffic"] = "false"
-        applicationId = "com.tes_modloader.app"
-        minSdk = 35
+        applicationId = "com.openmodloader.app"
+        minSdk = 24
         targetSdk = 36
         versionCode = tauriProperties.getProperty("tauri.android.versionCode", "1").toInt()
         versionName = tauriProperties.getProperty("tauri.android.versionName", "1.0")
@@ -34,13 +34,10 @@ android {
 
     signingConfigs {
         create("release") {
-            val storeFileProp = localProperties.getProperty("RELEASE_STORE_FILE")
-            if (storeFileProp != null) {
-                storeFile = rootProject.file(storeFileProp)
-                storePassword = localProperties.getProperty("RELEASE_STORE_PASSWORD")
-                keyAlias = localProperties.getProperty("RELEASE_KEY_ALIAS")
-                keyPassword = localProperties.getProperty("RELEASE_KEY_PASSWORD")
-            }
+            storeFile = localProperties.getProperty("RELEASE_STORE_FILE")?.let { file(it) }
+            storePassword = localProperties.getProperty("RELEASE_STORE_PASSWORD")
+            keyAlias = localProperties.getProperty("RELEASE_KEY_ALIAS")
+            keyPassword = localProperties.getProperty("RELEASE_KEY_PASSWORD")
         }
     }
 
