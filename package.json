@@ -48,6 +48,7 @@
         "clsx": "^2.1.1",
         "css-media-splitter": "^0.2.9",
         "mode-watcher": "^1.1.0",
+        "navdown": "^1.2.1",
         "tailwind-merge": "^3.4.0",
         "terser": "^5.46.0",
         "theme-change": "^2.5.0",
