@@ -1,11 +1,19 @@
 <script lang="ts">
-    import { Avatar } from "bits-ui";
+    import { Card, CardBody, CardTitle } from "$lib/components/ui/card";
+    import {
+        Boxes,
+        ChartColumn,
+        HardDrive,
+        LogOut,
+        Rocket,
+        TrendingUp,
+    } from "@lucide/svelte";
 
     // Dados simulados para o profile
     const stats = [
-        { label: "Mods", value: "142", icon: "extension" },
-        { label: "Ver", value: "0.48", icon: "rocket_launch" },
-        { label: "GB", value: "4.2", icon: "hard_drive" },
+        { label: "Mods", value: "142", Icon: Boxes },
+        { label: "Ver", value: "0.48", Icon: Rocket },
+        { label: "GB", value: "4.2", Icon: HardDrive },
     ];
 
     const menuItems = [
@@ -61,12 +69,10 @@
     </div>
 </div>
 
-<div class="px-4">
-    <!-- Profile Header -->
-    <div class="flex flex-col items-center pt-6 pb-6 px-4 relative">
-        <!-- Abstract Background Glow -->
+<div class="px-4 pb-4 flex flex-col gap-4">
+    <div class="flex flex-col items-center py-6 px-4 relative">
         <div
-            class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-primary/20 rounded-full blur-[80px] pointer-events-none z-0"
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-primary/20 rounded-full blur-3xl pointer-events-none z-0"
         ></div>
 
         <div class="z-10 flex flex-col items-center gap-4">
@@ -92,53 +98,28 @@
         </div>
     </div>
 
-    <!-- Stats Dashboard -->
-    <div class="px-4">
-        <div class="stats w-full bg-base-100 border-base-300 border">
-            {#each stats as stat}
-                <div class="stat">
-                    <p class="stat-title">
-                        {stat.label}
-                    </p>
-                    <p class="stat-value">
-                        {stat.value}
-                    </p>
-                </div>
-            {/each}
-        </div>
+    <div class="stats w-full bg-base-100 ring-base-300 ring">
+        {#each stats as stat}
+            <div class="stat">
+                <p class="stat-title flex justify-between">
+                    {stat.label}
+                    <stat.Icon class="text-primary size-4" />
+                </p>
+                <p class="stat-value">
+                    {stat.value}
+                </p>
+            </div>
+        {/each}
     </div>
 
-    <!-- Activity Chart -->
-    <div class="px-4 py-6">
-        <div
-            class="rounded-xl bg-white dark:bg-card-dark p-5 shadow-sm ring-1 ring-black/5 dark:ring-white/5"
-        >
-            <div class="flex items-center justify-between mb-4">
-                <div>
-                    <p
-                        class="text-slate-500 dark:text-slate-400 text-sm font-medium"
-                    >
-                        Activity (30 Days)
-                    </p>
-                    <div class="flex items-baseline gap-2">
-                        <h3 class="text-2xl font-bold">24 hrs</h3>
-                        <span
-                            class="text-emerald-500 text-sm font-medium flex items-center"
-                        >
-                            <span
-                                class="material-symbols-outlined text-sm mr-0.5"
-                                >trending_up</span
-                            >
-                            +12%
-                        </span>
-                    </div>
-                </div>
-                <div
-                    class="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary"
-                >
-                    <span class="material-symbols-outlined">bar_chart</span>
-                </div>
-            </div>
+    <Card class="bg-base-100 ring-base-300 ring">
+        <CardBody>
+            <CardTitle class="justify-between">
+                Activity (30 Days)
+
+                <ChartColumn class="text-primary" />
+            </CardTitle>
+
             <div class="h-32 w-full relative">
                 <svg
                     fill="none"
@@ -180,84 +161,30 @@
             </div>
             <div class="flex justify-between mt-3 px-2">
                 <p
-                    class="text-slate-400 dark:text-slate-500 text-xs font-bold uppercase tracking-wider"
+                    class="text-slate-500 text-xs font-bold uppercase tracking-wider"
                 >
                     Wk 1
                 </p>
                 <p
-                    class="text-slate-400 dark:text-slate-500 text-xs font-bold uppercase tracking-wider"
+                    class="text-slate-500 text-xs font-bold uppercase tracking-wider"
                 >
                     Wk 2
                 </p>
                 <p
-                    class="text-slate-400 dark:text-slate-500 text-xs font-bold uppercase tracking-wider"
+                    class="text-slate-500 text-xs font-bold uppercase tracking-wider"
                 >
                     Wk 3
                 </p>
                 <p
-                    class="text-slate-400 dark:text-slate-500 text-xs font-bold uppercase tracking-wider"
+                    class="text-slate-500 text-xs font-bold uppercase tracking-wider"
                 >
                     Wk 4
                 </p>
             </div>
-        </div>
-    </div>
-
-    <!-- Settings Menu -->
-    <div class="px-4 pb-4">
-        {#each menuItems as section}
-            <h3 class="text-lg font-bold px-1 pb-3 pt-2">
-                {section.section}
-            </h3>
-            <div
-                class="bg-white dark:bg-card-dark rounded-xl overflow-hidden shadow-sm ring-1 ring-black/5 dark:ring-white/5 mb-6"
-            >
-                {#each section.items as item}
-                    <button
-                        class="w-full flex items-center justify-between p-4 hover:bg-black/5 dark:hover:bg-white/10 transition-colors border-b border-gray-100 dark:border-white/5 last:border-0 text-left"
-                    >
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-8 h-8 rounded-lg {item.bgColor} flex items-center justify-center"
-                            >
-                                <span
-                                    class="material-symbols-outlined {item.color} text-[20px]"
-                                    >{item.icon}</span
-                                >
-                            </div>
-                            <span class="font-medium text-base"
-                                >{item.label}</span
-                            >
-                        </div>
-                        <div class="flex items-center gap-2">
-                            {#if "value" in item && item.value}
-                                <span class="text-sm text-slate-500"
-                                    >{item.value}</span
-                                >
-                            {/if}
-                            <span
-                                class="material-symbols-outlined text-slate-400 text-[20px]"
-                                >{"actionIcon" in item
-                                    ? item.actionIcon
-                                    : "chevron_right"}</span
-                            >
-                        </div>
-                    </button>
-                {/each}
-            </div>
-        {/each}
-
-        <!-- Logout -->
-        <button
-            class="w-full rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-500 dark:text-red-400 font-bold p-4 flex items-center justify-center gap-2 transition-colors"
-        >
-            <span class="material-symbols-outlined">logout</span>
-            Log Out
-        </button>
-        <p
-            class="text-center text-xs text-slate-400 dark:text-slate-600 mt-6 mb-8 font-mono"
-        >
-            OpenMW Loader v0.48.0 (Build 2394)
-        </p>
-    </div>
+        </CardBody>
+    </Card>
+    <button class="btn btn-error">
+        <LogOut />
+        Log Out
+    </button>
 </div>

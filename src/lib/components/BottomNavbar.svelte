@@ -7,6 +7,8 @@
         SettingsIcon,
         UserIcon,
     } from "@lucide/svelte";
+    import { navdown } from "navdown";
+    import { fromAction } from "svelte/attachments";
 
     const activeTab = $derived(page.url.pathname);
 
@@ -48,7 +50,7 @@
     ];
 </script>
 
-<nav class="dock">
+<nav class="dock" {@attach fromAction(navdown)}>
     {#if activeDownloads.length > 0}
         <div
             class="absolute top-0 left-0 h-0.5 bg-primary transition-all duration-300"

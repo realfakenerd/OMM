@@ -3,6 +3,7 @@
     import { List, ListRow } from "$lib/components/ui/list";
     import {
         ArrowUpDown,
+        ChevronDown,
         ChevronRight,
         FileBracesCorner,
         FolderDown,
@@ -21,6 +22,7 @@
     }
 
     const themes = [
+        "default",
         "light",
         "dark",
         "cupcake",
@@ -227,13 +229,16 @@
                                 >palette</span
                             >
                         </div>
+
                         <select
                             id="theme-changer"
                             data-choose-theme
                             class="select"
                         >
                             {#each themes as theme}
-                                <option value={theme}>{theme}</option>
+                                <option class="capitalize" value={theme}
+                                    >{theme}</option
+                                >
                             {/each}
                         </select>
                     </ListRow>

@@ -1,7 +1,16 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { getFeaturedMods, searchMods, type NexusMod } from "$lib/nexus";
-    import DownloadsDrawer from "$lib/components/DownloadsDrawer.svelte";
+    import {
+        Bell,
+        Funnel,
+        Search,
+        ChevronRight,
+        Plus,
+        Download,
+        Star,
+    } from "@lucide/svelte";
+    // import DownloadsDrawer from "$lib/components/DownloadsDrawer.svelte";
 
     let featuredMods = $state<NexusMod[]>([]);
     let searchResults = $state<NexusMod[]>([]);
@@ -84,74 +93,34 @@
 
 <div class="relative mx-auto w-full font-display antialiased">
     <!-- Header -->
-    <header class="sticky top-0 z-20 bg-background backdrop-blur-md pt-2">
-        <div class="flex items-center justify-between px-4 py-3">
-            <div class="flex items-center gap-3">
-                <button
-                    class="flex h-10 w-10 items-center justify-center rounded-full bg-surface-light dark:bg-surface-dark text-gray-600 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
-                >
-                    <span class="material-symbols-outlined text-[24px]"
-                        >menu</span
-                    >
-                </button>
-                <h1 class="text-2xl font-bold tracking-tight">Explore</h1>
-            </div>
-            <div class="flex gap-2">
-                <DownloadsDrawer>
-                    <button
-                        class="flex h-10 w-10 items-center justify-center rounded-full bg-surface-light dark:bg-surface-dark text-gray-600 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-colors relative"
-                    >
-                        <span class="material-symbols-outlined text-[24px]"
-                            >download</span
-                        >
-                    </button>
-                </DownloadsDrawer>
-                <button
-                    class="flex h-10 w-10 items-center justify-center rounded-full bg-surface-light dark:bg-surface-dark text-gray-600 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10 transition-colors relative"
-                >
-                    <span class="material-symbols-outlined text-[24px]"
-                        >notifications</span
-                    >
+
+    <div
+        class="flex flex-col gap-4 p-4 sticky top-0 bg-base-100/70 backdrop-blur z-50"
+    >
+        <div class="flex w-full justify-between items-center">
+            <h1 class="tracking-tight text-4xl font-bold leading-tight">
+                Explore Mods
+            </h1>
+            <button class="btn btn-ghost btn-circle">
+                <div class="indicator">
                     <span
-                        class="absolute top-2 right-2 h-2.5 w-2.5 rounded-full bg-primary-settings ring-2 ring-background-dark"
+                        aria-label="status"
+                        class="indicator-item status status-primary"
                     ></span>
-                </button>
-            </div>
+                    <Bell />
+                </div>
+            </button>
         </div>
 
-        <!-- Search Bar -->
-        <div class="px-4 pb-4">
-            <div class="relative flex w-full items-center">
-                <span
-                    class="absolute left-4 text-[#ab9db9] material-symbols-outlined"
-                    >search</span
-                >
-                <input
-                    bind:value={searchQuery}
-                    class="w-full rounded-2xl border-none bg-surface-light dark:bg-surface-dark py-3.5 pl-11 pr-4 text-sm font-medium text-gray-900 dark:text-white placeholder-[#ab9db9] focus:ring-2 focus:ring-primary-settings shadow-sm"
-                    placeholder="Search mods, authors, categories..."
-                    type="text"
-                />
-                {#if isSearching}
-                    <div
-                        class="absolute right-12 animate-spin size-4 border-2 border-primary-settings border-t-transparent rounded-full"
-                    ></div>
-                {/if}
-                <button
-                    class="absolute right-3 p-1.5 rounded-lg text-[#ab9db9] hover:bg-background-dark/20 dark:hover:bg-white/10 transition-colors"
-                >
-                    <span class="material-symbols-outlined text-[20px]"
-                        >tune</span
-                    >
-                </button>
-            </div>
-        </div>
-    </header>
+        <label class="input w-full">
+            <Search />
+            <input type="search" required placeholder="Search for mods..." />
+            <Funnel />
+        </label>
+    </div>
 
     <!-- Main Content -->
-    <main
-        class="relative z-10 w-full overflow-y-auto pb-24 space-y-8 no-scrollbar"
-    >
+    <main class="relative w-full overflow-y-auto pb-24 space-y-8 no-scrollbar">
         {#if searchQuery.trim().length > 2}
             <section class="px-4">
                 <h2 class="text-xl font-bold mb-4">Search Results</h2>
@@ -271,77 +240,62 @@
             </section>
 
             <!-- Most Popular List -->
-            <section class="px-4">
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-lg font-bold">Most Popular</h2>
-                    <button
-                        class="text-xs font-semibold text-primary-settings flex items-center gap-0.5 hover:opacity-80"
+            <section class="p-4 flex flex-col gap-4">
+                <div class="flex items-center justify-between">
+                    <h2
+                        class="text-xs font-bold uppercase tracking-wider text-primary/80"
                     >
-                        See All <span
-                            class="material-symbols-outlined text-[16px]"
-                            >arrow_forward_ios</span
-                        >
+                        Most Popular
+                    </h2>
+                    <button
+                        class="btn btn-ghost btn-xs uppercase tracking-wider"
+                    >
+                        See All
+                        <ChevronRight />
                     </button>
                 </div>
                 <div class="flex flex-col gap-3">
                     {#each popularMods as mod}
-                        <div
-                            class="flex gap-3 rounded-xl bg-surface-light dark:bg-surface-dark p-3 shadow-sm hover:ring-1 hover:ring-primary-settings/50 transition-all"
-                        >
-                            <div
-                                class="h-20 w-20 shrink-0 overflow-hidden rounded-lg bg-gray-800"
-                            >
-                                <div
-                                    class="h-full w-full bg-cover bg-center"
-                                    style="background-image: url('{mod.image}');"
-                                ></div>
-                            </div>
-                            <div class="flex flex-1 flex-col justify-between">
+                        <div class="card card-side bg-base-200">
+                            <figure>
+                                <img
+                                    loading="lazy"
+                                    class="w-24 aspect-square"
+                                    src={mod.image}
+                                    alt="mod thumbnail"
+                                />
+                            </figure>
+
+                            <div class="card-body">
                                 <div>
-                                    <h3
-                                        class="font-bold text-sm leading-tight mb-1"
-                                    >
+                                    <h3 class="card-title">
                                         {mod.title}
                                     </h3>
-                                    <p class="text-xs text-[#ab9db9]">
+                                    <p class="text-xs text-content-base/70">
                                         by {mod.author}
                                     </p>
                                 </div>
-                                <div class="flex items-center gap-3 mt-2">
+                                <div class="flex items-center gap-3">
                                     <div
                                         class="flex items-center gap-1 text-yellow-500"
                                     >
-                                        <span
-                                            class="material-symbols-outlined text-[14px] fill-current"
-                                            >star</span
-                                        >
-                                        <span
-                                            class="text-xs font-bold text-gray-700 dark:text-gray-300"
+                                        <Star class="size-4" />
+                                        <span class="text-xs font-bold"
                                             >{mod.rating}</span
                                         >
                                     </div>
-                                    <div
-                                        class="flex items-center gap-1 text-[#ab9db9]"
-                                    >
-                                        <span
-                                            class="material-symbols-outlined text-[14px]"
-                                            >download</span
-                                        >
+                                    <div class="flex items-center gap-1">
+                                        <Download class="size-4" />
                                         <span class="text-xs"
                                             >{mod.downloads}</span
                                         >
                                     </div>
                                 </div>
-                            </div>
-                            <div class="flex items-center">
-                                <button
-                                    class="flex h-8 w-8 items-center justify-center rounded-full bg-primary-settings/10 text-primary-settings hover:bg-primary-settings hover:text-white transition-colors"
-                                >
-                                    <span
-                                        class="material-symbols-outlined text-[20px]"
-                                        >add</span
-                                    >
-                                </button>
+                                <div class="card-actions">
+                                    <button class="btn">
+                                        <Plus />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     {/each}
@@ -349,54 +303,50 @@
             </section>
 
             <!-- Highest Rated -->
-            <section>
-                <div class="flex items-center justify-between px-4 mb-4">
-                    <h2 class="text-lg font-bold">Highest Rated</h2>
-                    <button
-                        class="text-xs font-semibold text-primary-settings flex items-center gap-0.5 hover:opacity-80"
+            <section class="flex flex-col gap-4">
+                <div class="flex items-center justify-between px-4">
+                    <h2
+                        class="text-xs font-bold uppercase tracking-wider text-primary/80"
                     >
-                        See All <span
-                            class="material-symbols-outlined text-[16px]"
-                            >arrow_forward_ios</span
-                        >
+                        Highest Rated
+                    </h2>
+
+                    <button
+                        class="btn btn-ghost btn-xs uppercase tracking-wider"
+                    >
+                        See All
+                        <ChevronRight />
                     </button>
                 </div>
-                <div
-                    class="flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 hide-scrollbar"
-                >
+                <div class="carousel carousel-start bg-base-300 p-4 gap-x-4">
                     {#each highestRated as mod}
-                        <div
-                            class="w-40 shrink-0 snap-start flex flex-col gap-2 group"
-                        >
-                            <div
-                                class="relative w-full aspect-square rounded-xl overflow-hidden bg-surface-dark shadow-md"
-                            >
-                                <div
-                                    class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-300"
-                                    style="background-image: url('{mod.image}');"
-                                ></div>
-                                <div
-                                    class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm rounded-md px-1.5 py-0.5 flex items-center gap-0.5"
+                        <div class="carousel-item indicator">
+                            <div class="indicator-item badge text-yellow-400">
+                                <Star class="size-4" />
+                                <span class="text-xs font-bold"
+                                    >{mod.rating}</span
                                 >
-                                    <span
-                                        class="material-symbols-outlined text-[10px] text-yellow-400 fill-current"
-                                        >star</span
-                                    >
-                                    <span
-                                        class="text-[10px] font-bold text-white"
-                                        >{mod.rating}</span
-                                    >
-                                </div>
                             </div>
-                            <div>
-                                <h3 class="font-bold text-sm truncate">
-                                    {mod.title}
-                                </h3>
-                                <p
-                                    class="text-[10px] text-[#ab9db9] uppercase tracking-wide"
-                                >
-                                    {mod.category}
-                                </p>
+
+                            <div class="card image-full card-sm bg-base-200">
+                                <figure>
+                                    <img
+                                        loading="lazy"
+                                        class="w-full h-40"
+                                        src={mod.image}
+                                        alt="mod thumbnail"
+                                    />
+                                </figure>
+                                <div class="card-body">
+                                    <div class="card-title">
+                                        {mod.title}
+                                    </div>
+                                    <p
+                                        class="text-xs text-primary/60 uppercase tracking-wide"
+                                    >
+                                        {mod.category}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     {/each}

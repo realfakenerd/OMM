@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { Bell, Funnel, Play, Search } from "@lucide/svelte";
+
     // Lista de mods instalados com estado reativo
     let mods = $state([
         {
@@ -81,113 +83,70 @@
     }
 </script>
 
-<!-- Header -->
-<header class="sticky top-0 z-20 bg-background/95 backdrop-blur-md pt-2">
-    <div class="flex items-center justify-between px-4 py-3">
-        <div class="flex items-center gap-3">
-            <button
-                class="flex h-10 w-10 items-center justify-center rounded-full bg-card text-card-foreground"
-            >
-                <span class="material-symbols-outlined text-[24px]">menu</span>
-            </button>
-            <h1 class="text-2xl font-bold tracking-tight">My Mods</h1>
-        </div>
-        <div class="flex gap-2">
-            <button
-                class="flex h-10 w-10 items-center justify-center rounded-full bg-card text-card-foreground hover:bg-gray-100 dark:hover:bg-white/10 transition-colors relative"
-            >
-                <span class="material-symbols-outlined text-[24px]"
-                    >notifications</span
-                >
+<div
+    class="flex flex-col gap-4 p-4 sticky top-0 bg-base-100/70 backdrop-blur z-50"
+>
+    <div class="flex w-full justify-between items-center">
+        <h1 class="tracking-tight text-4xl font-bold leading-tight">My Mods</h1>
+        <button class="btn btn-ghost btn-circle">
+            <div class="indicator">
                 <span
-                    class="absolute top-2 right-2 h-2.5 w-2.5 rounded-full bg-primary-settings ring-2 ring-background-dark"
+                    aria-label="status"
+                    class="indicator-item status status-primary"
                 ></span>
-            </button>
-        </div>
+                <Bell />
+            </div>
+        </button>
     </div>
 
-    <!-- Search -->
-    <div class="px-4 pb-4">
-        <div class="relative flex w-full items-center">
-            <span
-                class="absolute left-4 text-[#ab9db9] material-symbols-outlined"
-                >search</span
-            >
-            <input
-                bind:value={searchQuery}
-                class="w-full rounded-2xl border-none bg-card py-3.5 pl-11 pr-4 text-sm font-medium text-gray-900 placeholder-[#ab9db9] focus:ring-2 focus:ring-primary-settings shadow-sm"
-                placeholder="Filter installed mods..."
-                type="text"
-            />
-            <button
-                class="absolute right-3 p-1.5 rounded-lg text-[#ab9db9] hover:bg-background-dark/20 dark:hover:bg-white/10 transition-colors"
-            >
-                <span class="material-symbols-outlined text-[20px]"
-                    >filter_list</span
-                >
-            </button>
-        </div>
-    </div>
-</header>
+    <label class="input w-full">
+        <Search />
+        <input type="search" required placeholder="Filter installed mods..." />
+        <Funnel />
+    </label>
+</div>
 
 <!-- Mod List -->
-<main class="flex-1 overflow-y-auto pb-44 px-4 space-y-3 no-scrollbar">
+<main class="p-4 flex flex-col gap-4">
     <div class="flex items-center justify-between pt-2 pb-1">
-        <span class="text-xs font-bold text-[#ab9db9] uppercase tracking-wider"
+        <span class="text-xs font-bold text-primary/80 uppercase tracking-wider"
             >Installed ({mods.length})</span
         >
-        <button
-            class="text-xs font-semibold text-primary-settings hover:opacity-80"
-            >Manage Load Order</button
-        >
+        <button class="text-xs font-semibold">Manage Load Order</button>
     </div>
 
     {#each filteredMods as mod (mod.id)}
-        <div
-            class="flex items-center gap-4 rounded-2xl bg-card p-3 pr-4 shadow-sm border border-transparent dark:border-white/5 hover:border-primary-settings/30 transition-all {!mod.active
-                ? 'opacity-80 grayscale-[0.3]'
-                : ''}"
-        >
-            <div
-                class="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-gray-800 shadow-inner"
-            >
-                <div
-                    class="h-full w-full bg-cover bg-center"
-                    style="background-image: url('{mod.image}');"
-                ></div>
-            </div>
-            <div class="flex flex-1 flex-col">
-                <h3 class="font-bold text-base text-gray-900 leading-tight">
-                    {mod.name}
-                </h3>
-                <p class="text-xs text-[#ab9db9] font-medium mt-1">
-                    {mod.version} • {mod.size}
-                </p>
-            </div>
-            <label class="relative inline-flex items-center cursor-pointer">
-                <input
-                    type="checkbox"
-                    bind:checked={mod.active}
-                    class="sr-only peer"
+        <div class="card card-side bg-base-200">
+            <figure>
+                <img
+                    loading="lazy"
+                    class="w-24 object-cover aspect-square"
+                    src={mod.image}
+                    alt="mod thumb"
                 />
-                <div
-                    class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary-settings shadow-inner"
-                ></div>
-            </label>
+            </figure>
+            <div class="card-body">
+                <div class="card-title">
+                    {mod.name}
+                </div>
+
+                <div class="card-action">
+                    <label class="toggle">
+                        <input
+                            type="checkbox"
+                            bind:checked={mod.active}
+                            class="sr-only peer"
+                        />
+                    </label>
+                </div>
+            </div>
         </div>
     {/each}
 </main>
 
-<div
-    class="fixed bottom-24 left-1/2 -translate-x-1/2 w-full max-w-md px-4 z-30 pb-4 pt-6"
->
-    <button
-        onclick={handlePlay}
-        class="w-full bg-primary hover:opacity-90 active:scale-[0.98] transition-all h-14 rounded-2xl font-bold text-lg shadow-md shadow-primary/30 text-white flex items-center justify-center gap-3"
-    >
-        <span class="material-symbols-outlined fill-current text-[28px]"
-            >play_arrow</span
-        >
+<div class="fab bottom-24">
+    <button onclick={handlePlay} class="btn btn-primary w-full">
+        <Play />
         <span>Play Morrowind</span>
     </button>
 </div>
