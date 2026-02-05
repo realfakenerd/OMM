@@ -1,5 +1,5 @@
 export interface Mod {
-    name: String;
+    name: string;
     enabled: boolean;
 }
 
@@ -14,7 +14,7 @@ export class ModManager {
         this.mods.push(mod);
     }
 
-    toggleMod(name: String) {
+    toggleMod(name: string) {
         const mod = this.mods.find(m => m.name === name);
         if (mod) {
             mod.enabled = !mod.enabled;

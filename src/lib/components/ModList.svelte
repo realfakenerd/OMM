@@ -3,7 +3,7 @@
 
     interface Props {
         mods: Mod[];
-        onToggle: (name: String) => void;
+        onToggle: (name: string) => void;
         onReorder: (from: number, to: number) => void;
     }
 
